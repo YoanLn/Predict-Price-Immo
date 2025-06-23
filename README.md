@@ -37,17 +37,31 @@ pip install pandas numpy scikit-learn xgboost matplotlib seaborn
 
 ## Utilisation
 
+**Version de base:**
 ```bash
 python main.py
 ```
 
-Le script va automatiquement:
+**Version optimisée:**
+```bash
+python optimize.py
+```
+
+Le script de base va automatiquement:
 1. Charger et explorer les données
 2. Nettoyer les valeurs manquantes
 3. Créer de nouvelles variables
 4. Entraîner 3 modèles différents
 5. Comparer les performances
 6. Générer les prédictions pour Kaggle
+
+Le script optimisé ajoute:
+- Feature engineering avancé
+- Correction de l'asymétrie des données
+- Détection d'outliers sophistiquée
+- Hyperparameter tuning avec GridSearch
+- Modèle ensemble (moyenne pondérée)
+- Feature selection automatique
 
 ## Pipeline d'analyse
 
@@ -75,12 +89,19 @@ Le script va automatiquement:
 - Validation croisée
 - Analyse de l'importance des variables
 
-## Résultats attendus
+## Résultats obtenus
 
-D'après mes tests précédents:
-- Régression linéaire: ~85% R²
-- Random Forest: ~89% R²
-- XGBoost: ~90% R²
+**Version de base (main.py):**
+- Linear Regression: 88.0% R² (meilleur)
+- Random Forest: 87.0% R²
+- XGBoost: 87.6% R²
+
+**Version optimisée (optimize.py):**
+- Ridge: 87.3% R²
+- Random Forest: 89.0% R²
+- XGBoost: 90.2% R² (meilleur individuel)
+- LightGBM: 90.1% R²
+- **Ensemble Model: 90.6% R²** (meilleur global)
 
 Les variables les plus importantes sont généralement:
 - Surface habitable totale
@@ -90,10 +111,14 @@ Les variables les plus importantes sont généralement:
 
 ## Fichiers générés
 
+**Version de base:**
 - `data_exploration.png` - graphiques d'exploration
 - `model_comparison.png` - comparaison des performances
 - `feature_importance_*.png` - importance des variables
 - `submission.csv` - prédictions pour Kaggle
+
+**Version optimisée:**
+- `submission_optimized.csv` - prédictions optimisées pour Kaggle
 
 ## Ce que j'ai appris
 
@@ -116,7 +141,8 @@ Ce projet m'a permis de pratiquer:
 
 ```
 Predict-Price-Immo/
-├── main.py                 # Script principal
+├── main.py                 # Script principal (version de base)
+├── optimize.py            # Script d'optimisation avancée
 ├── train.csv              # Données d'entraînement
 ├── test.csv               # Données de test
 ├── data_description.txt   # Description des variables
