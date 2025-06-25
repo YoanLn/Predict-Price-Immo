@@ -30,22 +30,42 @@ Variables principales:
 ## Installation
 
 ```bash
+# 1. Cloner le projet
 git clone https://github.com/YoanLeNevez/Predict-Price-Immo.git
 cd Predict-Price-Immo
-pip install pandas numpy scikit-learn xgboost matplotlib seaborn
+
+# 2. Installer les dépendances (méthode recommandée)
+pip install -r requirements.txt
+
+# 3. Ou installer manuellement
+pip install pandas numpy scikit-learn xgboost lightgbm matplotlib seaborn scipy
+```
+
+**Note pour les étudiants :** Si vous avez des problèmes d'installation, vous pouvez utiliser Anaconda :
+```bash
+conda install pandas numpy scikit-learn matplotlib seaborn
+pip install xgboost lightgbm
 ```
 
 ## Utilisation
 
-**Version de base:**
+**Pour débuter :**
+```bash
+python demo.py
+```
+Ce script interactif vous permet d'explorer les données étape par étape.
+
+**Version de base (apprentissage) :**
 ```bash
 python main.py
 ```
+Script avec des explications détaillées.
 
-**Version optimisée:**
+**Version optimisée (avancée) :**
 ```bash
 python optimize.py
 ```
+Script avec des techniques avancées de machine learning.
 
 Le script de base va automatiquement:
 1. Charger et explorer les données
@@ -143,12 +163,22 @@ Ce projet m'a permis de pratiquer:
 Predict-Price-Immo/
 ├── main.py                 # Script principal (version de base)
 ├── optimize.py            # Script d'optimisation avancée
+├── demo.py                # Script de démonstration interactif
+
+├── utils.py               # Fonctions utilitaires communes
+├── requirements.txt       # Dépendances Python
 ├── train.csv              # Données d'entraînement
 ├── test.csv               # Données de test
 ├── data_description.txt   # Description des variables
 ├── sample_submission.csv  # Format de soumission
 └── README.md             # Ce fichier
 ```
+
+**Fichiers générés après exécution :**
+- `data_exploration.png` - Graphiques d'exploration
+- `model_comparison.png` - Comparaison des modèles
+- `feature_importance_*.png` - Importance des variables
+- `submission.csv` / `submission_optimized.csv` - Prédictions
 
 ## Contact
 
