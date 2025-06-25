@@ -1,187 +1,148 @@
 # Prédiction des Prix Immobiliers
 
-Projet d'apprentissage en machine learning réalisé par Yoan LE NEVEZ dans le cadre de mes études en data science.
+Un projet de machine learning pour prédire les prix des maisons en utilisant le dataset Kaggle "House Prices". Ce projet explore différentes techniques d'analyse de données et d'apprentissage automatique sur des données tabulaires.
 
-## À propos
+## Vue d'ensemble
 
-Ce projet utilise le dataset Kaggle "House Prices" pour apprendre et pratiquer les techniques de machine learning sur des données tabulaires. L'objectif est de prédire le prix de vente des maisons en utilisant différents algorithmes et de comparer leurs performances.
+L'objectif est de construire un modèle capable de prédire avec précision le prix de vente des maisons en se basant sur leurs caractéristiques. Le projet couvre l'ensemble du pipeline de data science : exploration, nettoyage, feature engineering, modélisation et évaluation.
 
-## Technologies utilisées
+## Technologies
 
-- **Python 3.x**
-- **pandas** - manipulation des données
-- **numpy** - calculs numériques
-- **scikit-learn** - algorithmes de machine learning
-- **xgboost** - gradient boosting
-- **matplotlib & seaborn** - visualisations
-- **jupyter** - développement interactif
-
-## Dataset
-
-Le dataset contient 1460 maisons d'entraînement et 1459 maisons de test avec 79 variables explicatives décrivant différents aspects des propriétés résidentielles.
-
-Variables principales:
-- Surface habitable, nombre de chambres, salles de bain
-- Qualité générale et condition de la maison
-- Année de construction et rénovations
-- Caractéristiques du garage, sous-sol, terrain
-- Localisation (quartier)
-
-## Installation
-
-```bash
-# 1. Cloner le projet
-git clone https://github.com/YoanLeNevez/Predict-Price-Immo.git
-cd Predict-Price-Immo
-
-# 2. Installer les dépendances (méthode recommandée)
-pip install -r requirements.txt
-
-# 3. Ou installer manuellement
-pip install pandas numpy scikit-learn xgboost lightgbm matplotlib seaborn scipy
-```
-
-**Note pour les étudiants :** Si vous avez des problèmes d'installation, vous pouvez utiliser Anaconda :
-```bash
-conda install pandas numpy scikit-learn matplotlib seaborn
-pip install xgboost lightgbm
-```
-
-## Utilisation
-
-**Pour débuter :**
-```bash
-python demo.py
-```
-Ce script interactif vous permet d'explorer les données étape par étape.
-
-**Version de base (apprentissage) :**
-```bash
-python main.py
-```
-Script avec des explications détaillées.
-
-**Version optimisée (avancée) :**
-```bash
-python optimize.py
-```
-Script avec des techniques avancées de machine learning.
-
-Le script de base va automatiquement:
-1. Charger et explorer les données
-2. Nettoyer les valeurs manquantes
-3. Créer de nouvelles variables
-4. Entraîner 3 modèles différents
-5. Comparer les performances
-6. Générer les prédictions pour Kaggle
-
-Le script optimisé ajoute:
-- Feature engineering avancé
-- Correction de l'asymétrie des données
-- Détection d'outliers sophistiquée
-- Hyperparameter tuning avec GridSearch
-- Modèle ensemble (moyenne pondérée)
-- Feature selection automatique
-
-## Pipeline d'analyse
-
-### 1. Exploration des données
-- Analyse des types de variables
-- Distribution du prix cible
-- Détection des valeurs manquantes
-- Visualisations exploratoires
-
-### 2. Preprocessing
-- Gestion intelligente des valeurs manquantes
-- Création de nouvelles features (surface totale, âge de la maison, etc.)
-- Encodage des variables catégorielles
-- Suppression des outliers
-- Standardisation des données
-
-### 3. Modélisation
-- **Régression linéaire** - modèle de base
-- **Random Forest** - ensemble method
-- **XGBoost** - gradient boosting
-
-### 4. Évaluation
-- RMSE (Root Mean Square Error)
-- R² Score
-- Validation croisée
-- Analyse de l'importance des variables
-
-## Résultats obtenus
-
-**Version de base (main.py):**
-- Linear Regression: 88.0% R² (meilleur)
-- Random Forest: 87.0% R²
-- XGBoost: 87.6% R²
-
-**Version optimisée (optimize.py):**
-- Ridge: 87.3% R²
-- Random Forest: 89.0% R²
-- XGBoost: 90.2% R² (meilleur individuel)
-- LightGBM: 90.1% R²
-- **Ensemble Model: 90.6% R²** (meilleur global)
-
-Les variables les plus importantes sont généralement:
-- Surface habitable totale
-- Qualité générale de la maison
-- Quartier
-- Âge de la maison
-
-## Fichiers générés
-
-**Version de base:**
-- `data_exploration.png` - graphiques d'exploration
-- `model_comparison.png` - comparaison des performances
-- `feature_importance_*.png` - importance des variables
-- `submission.csv` - prédictions pour Kaggle
-
-**Version optimisée:**
-- `submission_optimized.csv` - prédictions optimisées pour Kaggle
-
-## Ce que j'ai appris
-
-Ce projet m'a permis de pratiquer:
-- Le preprocessing complet d'un dataset réel
-- La création de nouvelles features pertinentes
-- La comparaison de différents algorithmes
-- L'évaluation et la visualisation des résultats
-- La préparation d'une soumission Kaggle
-
-## Améliorations possibles
-
-- Hyperparameter tuning avec GridSearch
-- Feature selection plus poussée
-- Ensemble methods (stacking, blending)
-- Cross-validation plus robuste
-- Analyse des résidus plus approfondie
+- Python 3.x
+- pandas, numpy pour la manipulation de données
+- scikit-learn pour le machine learning
+- XGBoost, LightGBM pour le gradient boosting
+- matplotlib, seaborn pour les visualisations
+- Jupyter pour l'exploration interactive
 
 ## Structure du projet
 
 ```
 Predict-Price-Immo/
-├── main.py                 # Script principal (version de base)
-├── optimize.py            # Script d'optimisation avancée
-├── demo.py                # Script de démonstration interactif
-
-├── utils.py               # Fonctions utilitaires communes
-├── requirements.txt       # Dépendances Python
-├── train.csv              # Données d'entraînement
-├── test.csv               # Données de test
-├── data_description.txt   # Description des variables
-├── sample_submission.csv  # Format de soumission
-└── README.md             # Ce fichier
+├── data/                   # Données du projet
+│   ├── train.csv          # Données d'entraînement
+│   ├── test.csv           # Données de test
+│   ├── sample_submission.csv
+│   └── data_description.txt
+├── notebooks/              # Analyses exploratoires
+│   └── house_price_exploration.ipynb
+├── src/                    # Code source
+│   ├── main.py            # Pipeline principal
+│   ├── optimize.py        # Version optimisée
+│   ├── demo.py            # Démonstration interactive
+│   └── utils.py           # Fonctions utilitaires
+├── results/                # Résultats et visualisations
+│   ├── data_exploration.png
+│   ├── model_comparison.png
+│   ├── submission.csv
+│   └── submission_optimized.csv
+├── requirements.txt
+└── README.md
 ```
 
-**Fichiers générés après exécution :**
-- `data_exploration.png` - Graphiques d'exploration
-- `model_comparison.png` - Comparaison des modèles
-- `feature_importance_*.png` - Importance des variables
-- `submission.csv` / `submission_optimized.csv` - Prédictions
+## Installation
 
-## Contact
+Clonez le repository et installez les dépendances :
 
-Yoan LE NEVEZ - Étudiant en Data Science
+```bash
+git clone https://github.com/YoanLeNevez/Predict-Price-Immo.git
+cd Predict-Price-Immo
+pip install -r requirements.txt
+```
 
-N'hésitez pas à me faire des retours ou suggestions pour améliorer ce projet d'apprentissage ! 
+## Utilisation
+
+### Exploration des données
+Commencez par le notebook Jupyter pour une analyse exploratoire interactive :
+```bash
+jupyter notebook notebooks/house_price_exploration.ipynb
+```
+
+### Scripts Python
+Trois approches différentes sont disponibles :
+
+**Démonstration simple :**
+```bash
+python src/demo.py
+```
+
+**Pipeline complet :**
+```bash
+python src/main.py
+```
+
+**Version optimisée :**
+```bash
+python src/optimize.py
+```
+
+## Le dataset
+
+Le dataset contient 1460 maisons d'entraînement et 1459 maisons de test avec 79 variables décrivant différents aspects des propriétés résidentielles.
+
+Les variables incluent :
+- Caractéristiques physiques : surface, nombre de pièces, garage
+- Qualité et condition de la maison
+- Informations temporelles : année de construction, rénovations
+- Localisation et environnement
+- Équipements et finitions
+
+## Approche méthodologique
+
+### 1. Exploration des données
+Analyse des distributions, corrélations et valeurs manquantes pour comprendre la structure du dataset.
+
+### 2. Preprocessing
+- Traitement intelligent des valeurs manquantes
+- Feature engineering : création de nouvelles variables pertinentes
+- Encodage des variables catégorielles
+- Gestion des outliers
+- Transformation des données asymétriques
+
+### 3. Modélisation
+Test de plusieurs algorithmes :
+- Régression linéaire (baseline)
+- Random Forest
+- XGBoost
+- LightGBM
+- Modèles ensemble
+
+### 4. Évaluation
+- Validation croisée
+- Métriques : RMSE, R²
+- Analyse de l'importance des features
+- Visualisation des performances
+
+## Résultats
+
+**Version de base :**
+- Linear Regression : 88.0% R²
+- Random Forest : 87.0% R²
+- XGBoost : 87.6% R²
+
+**Version optimisée :**
+- Random Forest : 89.0% R²
+- XGBoost : 90.2% R²
+- LightGBM : 90.1% R²
+- Modèle ensemble : 90.6% R²
+
+Les variables les plus prédictives sont généralement la surface habitable, la qualité générale, le quartier et l'âge de la maison.
+
+## Points clés du projet
+
+Ce projet illustre un pipeline complet de data science avec :
+- Une exploration approfondie des données
+- Des techniques avancées de feature engineering
+- La comparaison rigoureuse de différents modèles
+- L'optimisation des hyperparamètres
+- La création de modèles ensemble
+
+Il démontre l'importance du preprocessing et de la compréhension métier dans la performance des modèles de machine learning.
+
+## Améliorations possibles
+
+- Stacking de modèles plus sophistiqué
+- Feature selection automatisée
+- Validation temporelle pour les données immobilières
+- Intégration de données externes (économiques, géographiques)
+- Déploiement du modèle en production 
